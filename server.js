@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const app = express()
 const router = express.Router()
-mongoose.connect(process.env.dbURL || 'mongodb://portal-financeiro-db:27017/portal', {useNewUrlParser: true})
+mongoose.connect(process.env.dbURL || 'mongodb://portal-financeiro-db:27017/portal-financeiro', {useNewUrlParser: true})
 
 mongoose.Promise = global.Promise
 

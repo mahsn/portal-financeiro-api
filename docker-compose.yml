@@ -12,6 +12,8 @@ services:
     environment:
       NODE_ENV: development
     ports: 
-      - 3000:3000
+      - 9000:3000
+    expose:
+      - "9000"
   portal-financeiro-db:
     image: 'mongo:4'
