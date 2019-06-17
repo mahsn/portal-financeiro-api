@@ -14,12 +14,4 @@ services:
     ports: 
       - 3000:3000
   portal-financeiro-db:
-    image: 'mysql:8.0.16'
-    restart: always
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-        MYSQL_ROOT_PASSWORD: '123123'
-    ports:
-      - 3306:3306
-    volumes: 
-      - ./:/var/lib/mysql
+    image: 'mongo:4'

@@ -2,9 +2,13 @@ const express = require('express')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const mongoose = require('mongoose')
 
 const app = express()
 const router = express.Router()
+mongoose.connect(process.env.dbURL || 'mongodb://portal-financeiro-db:27017/portal', {useNewUrlParser: true})
+
+mongoose.Promise = global.Promise
 
 // Middlewares
 app.use(helmet())
