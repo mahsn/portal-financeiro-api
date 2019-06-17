@@ -1,12 +1,10 @@
 const router = require('express').Router()
 
-// Do not create routes in this file
-// Leave it only to import the routes
-// E.g.: router.use('/[ROUTE_NAME]', require('./[PATH]'))
+router.use('/titulos-vencidos', require('./TitulosVencidos'))
+router.use('/totais-negociacoes', require('./TotaisNegociacao'))
+router.use('/formas-pagamento', require('./FormasDePagamento'))
+router.use('/realizacao-de-negociacao', require('./RealizacaoDaNegociacao'))
+router.use('/negociacao', require('./Negociacao'))
 
-// Remove the line below once the routes have been created.
-router.get('/', (req, res, next) => {
-    return res.status(200).json({ msg: 'API endpoint'})
-})
 
 module.exports = router
