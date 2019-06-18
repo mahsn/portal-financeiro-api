@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
 const uuid = require('uuid/v4')
-const tituloVencido = require(".")
 
 const TituloVencido = new mongoose.Schema({
-    ipgeografia: String,
-    ppopcao: String,
-    requisicao: String,
-    opcao: String,
-    cdUnb: String,
-    cdCliente: String
+    cdEmpresa: Number,
+    cdFilial: Number,
+    nrTitulo: Number,
+    nrParcela: Number,
+    cdEspecie: Number,
+    dsEspecie: String,
+    dtEmissao: String,
+    dtVencimento: String,
+    vlTitulo: Number,
+    nrDiasEmAberto: Number,
+    stTitulo: String
 })
 
 module.exports = mongoose.model('TituloVencido', TituloVencido)
