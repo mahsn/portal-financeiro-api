@@ -15,7 +15,7 @@ const mockedTituloVencidoList = [
             nrDiasEmAberto : 3968,
             stTitulo : "Vencido"    
         }
-        }
+    }
 ]
 
 // Creating a method that returns the mockedTituloVencidoList.
