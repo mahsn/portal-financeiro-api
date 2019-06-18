@@ -1,10 +1,10 @@
 const router = require('express').Router()
 
-router.use('/titulos-vencidos', require('./TitulosVencidos'))
-router.use('/totais-negociacoes', require('./TotaisNegociacao'))
-router.use('/formas-pagamento', require('./FormasDePagamento'))
-router.use('/realizacao-de-negociacao', require('./RealizacaoDaNegociacao'))
-router.use('/negociacao', require('./Negociacao'))
+router.use('/titulos-vencidos', require('./titulosvencidos'))
+router.use('/totais-negociacoes', require('./totaisnegociacao'))
+router.use('/formas-pagamento', require('./formasdepagamento'))
+router.use('/realizacao-de-negociacao', require('./realizacaodanegociacao'))
+router.use('/negociacao', require('./negociacao'))
 
 
 module.exports = router

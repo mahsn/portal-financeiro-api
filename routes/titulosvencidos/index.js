@@ -1,5 +1,5 @@
 const router = require('express').Router()
 
-router.use('/', require('./read'))
+router.use('/', require('../../handlers/titulosvencidos'))
 
 module.exports = router
