@@ -59,7 +59,7 @@ router.post('/', (req, res, next) => {
             dtEmissao: dateFormat(randomDate(new Date(2019, 0, 1), new Date()),'dd/mm/yyyy'),
             dtVencimento: dateFormat(randomDate(new Date(2019, 12, 30), new Date()),'dd/mm/yyyy'),
             vlTitulo: (generateRandom(1,99)) * 9999,
-            nrDiasEmAberto: generateRandom(1,99) * 999999999,
+            nrDiasEmAberto: generateRandom(1,999999999),
             stTitulo: "Vencido"
         })
         titulo.save()
