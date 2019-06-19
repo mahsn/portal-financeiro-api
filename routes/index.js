@@ -4,7 +4,6 @@ router.use('/titulos-vencidos', require('./titulosvencidos'))
 router.use('/totais-negociacoes', require('./totaisnegociacao'))
 router.use('/formas-pagamento', require('./formasdepagamento'))
 router.use('/realizacao-de-negociacao', require('./realizacaodanegociacao'))
-router.use('/negociacao', require('./negociacao'))
 router.use('/user', require('./user'))
 
 

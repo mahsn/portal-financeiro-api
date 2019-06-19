@@ -1,16 +1,17 @@
-// Creating a fake list of titulos vencidos to eliminate database consulting.
-const mockedTotaisdeNegociacaoList = [
+// Creating a fake list of payments methods to eliminate database consulting.
+const mockedNegociacao = [
     {
-        TotaisNegociacao: {
-            vlTotalSemCorrecao: 141.35,	
-            vlTotalCorrigido: 141.35,		
-            vlTotalBoleto: 143.56,
-            vlTotalParcelado: 244.11,
-            prJuros: 0,
-            prMulta: 0
-       }
-    }
+            TotaisNegociacao: [
+                {
+                    vlTotalSemCorrecao: 141.35,
+                    vlTotalCorrigido: 141.35,
+                    vlTotalBoleto: 143.56,
+                    vlTotalParcelado: 244.11,
+                    prJuros: 0,
+                    prMulta: 0
+                }
+            ]
+        }
 ]
 
-// Exporting the methods of the repository module.
-module.exports = mockedTotaisdeNegociacaoList
+module.exports = mockedNegociacao

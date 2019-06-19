@@ -1,30 +1,21 @@
 const mongoose = require('mongoose')
-const uuid = require('uuid/v4')
 
 const RealizacaoDaNegociacao = new mongoose.Schema({
-    _id: {
-        type: String,
-        default: uuid()
-    },
-    ppopcao: String,
-    requisicao: String,
-    opcao: String,
-    cdUnb: String,
-    cdCliente: String,
-    qtDiasInadimplencia: String,
+    qtDiasInadimplencia: Number,
     dsEmail: String,
-    tpNegociacao: String,
-    nrParcelas: String,
+    tpNegociacao: Number,
+    nrParcelas: Number,
     idPeriodicidade: String,
     idEntrada: String,
-    nrTituloLst: String,
+    nrTituloLst: Number,
     dtVencimentoLst: String,
-    vlTituloLst: String, 
-    cdEmpresaLst: String,
-    cdFilialLst: String,
-    nrParcelaLst: String,
+    vlTituloLst: Number, 
+    cdEmpresaLst: Number,
+    cdFilialLst: Number,
+    nrParcelaLst: Number,
     dtEmissaoLst: String,
-    nrDiasEmAbertoLst: String
+    nrDiasEmAbertoLst: Number,
+    userId: {type: mongoose.Schema.Types.ObjectId, ref:'User'}
 })
 
 module.exports = mongoose.model('RealizacaoDaNegociacao', RealizacaoDaNegociacao)
