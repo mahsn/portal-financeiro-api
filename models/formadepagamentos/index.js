@@ -1,25 +1,23 @@
 const mongoose = require('mongoose')
 const uuid = require('uuid/v4')
 
-const FormaPagamento = new mongoose.Schema({
-    _id: {
-        type: String,
-        default: uuid()
-    },
-    ppopcao: String,
-    requisicao: String,
-    opcao: String,
-    cdUnb: String,
-    cdCliente: String,
-    qtDiasInadimplencia: String,
-    nrTituloLst: String,
-    dtVencimentoLst: String,
-    vlTituloLst: String, 
-    cdEmpresaLst: String,
-    cdFilialLst: String,
-    nrParcelaLst: String,
-    dtEmissaoLst: String,
-    nrDiasEmAbertoLst: String
-})
+// const FormaPagamento = new mongoose.Schema({
+//     Parcelamento: [
+//         {
+//             idPeridodicidade: String,
+//             idEntrada: String,
+//             dsFormaParcelamento: String,
+//             Parcelas: [
+//                 {
+//                     nrParcelas: Number,
+//                     vlTotalParcelado: Number,
+//                     vlPrimeiraParcela: Number,
+//                     vlDemaisParcelas: Number,
+//                     dtPrimeiroVenc: Date
+//                 }
+//             ]     
+//         }      
+//     ]
+// })
 
-module.exports = mongoose.model('FormaPagamento', FormaPagamento)
+// module.exports = mongoose.model('FormaPagamento', FormaPagamento)

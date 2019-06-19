@@ -2,16 +2,12 @@ const mongoose = require('mongoose')
 const uuid = require('uuid/v4')
 
 const Negociacao = new mongoose.Schema({
-    _id: {
-        type: String,
-        default: uuid()
-    },
-    ipgeografia: String,
-    ppopcao: String,
-    requisicao: String,
-    opcao: String,
-    cdUnb: String,
-    cdCliente: String
+    vlTotalSemCorrecao:Number,
+    vlTotalCorrigido:Number,
+    vlTotalBoleto: Number,
+    vlTotalParcelado: Number,
+    prJuros: Number,
+    prMulta: Number
 })
 
 module.exports = mongoose.model('Negociacao', Negociacao)

@@ -6,7 +6,7 @@ const router = require('express').Router()
 // Each handler of this module represents an HTTP verb (GET, POST, PUT and DELETE) that will be linked to them in the future through a router.
 
 router.post('/', (req, res, next) => {
-    return res.status(200).json({repository})
+    return res.status(200).json(repository)
 })
 
 module.exports = router
