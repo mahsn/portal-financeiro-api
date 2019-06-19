@@ -2,7 +2,7 @@ const repository = require('../../repository/titulosvencidos')
 const TitulosVencidos = require('../../models/titulosvencidos')
 const User = require('../../models/user')
 const router = require('express').Router()
-
+var dateFormat = require('dateformat');
 // Handlers are responsible for managing the request and response objects, and link them to a service module that will do the hard work.
 // Each of the following handlers has the req and res parameters, which stands for request and response. 
 // Each handler of this module represents an HTTP verb (GET, POST, PUT and DELETE) that will be linked to them in the future through a router.
@@ -10,6 +10,18 @@ const router = require('express').Router()
 router.get('/', (req, res, next) => {
     return res.status(200).json({repository})
 })
+
+const generateRandom = (min, max) => {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+  
 
 router.post('/', (req, res, next) => {
     const inadimplentes = User.find({ inadimplente: true }, function (err, users) {
@@ -38,16 +50,16 @@ router.post('/', (req, res, next) => {
         ]
 
         let titulo = new TitulosVencidos({
-            cdEmpresa: Math.floor(Math.random() + 1) * 100,
-            cdFilial: Math.floor(Math.random() + 1) * 1000,
-            nrTitulo: Math.floor(Math.random() + 1) * 100000,
-            nrParcela: Math.floor(Math.random() + 1) * 12,
-            cdEspecie: Math.floor(Math.random() + 1) * 99,
-            dsEspecie: especie[Math.floor(Math.random() + 1) * especie.length],
-            dtEmissao: "20/04/2018",
-            dtVencimento: "20/04/2018",
-            vlTitulo: (Math.random() + 1) * 9999,
-            nrDiasEmAberto: Math.floor(Math.random() + 1) * 999999999,
+            cdEmpresa: generateRandom(1,99) * 100,
+            cdFilial: generateRandom(1,99) * 1000,
+            nrTitulo: generateRandom(1,99) * 100000,
+            nrParcela: generateRandom(1,99) * 12,
+            cdEspecie: generateRandom(1,99) * 99,
+            dsEspecie: especie[generateRandom(1,99) * especie.length],
+            dtEmissao: dateFormat(randomDate(new Date(2019, 0, 1), new Date()),'dd/mm/yyyy'),
+            dtVencimento: dateFormat(randomDate(new Date(2019, 12, 30), new Date()),'dd/mm/yyyy'),
+            vlTitulo: (generateRandom(1,99)) * 9999,
+            nrDiasEmAberto: generateRandom(1,99) * 999999999,
             stTitulo: "Vencido"
         })
         titulo.save()
