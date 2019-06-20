@@ -1,5 +1,6 @@
 const repository = require('../../repository/titulosnegociados')
 const RealizacaoDeNegociacao = require('../../models/realizacaodanegociacao')
+const User = require('../../models/user')
 const router = require('express').Router()
 // Handlers are responsible for managing the request and response objects, and link them to a service module that will do the hard work.
 // Each of the following handlers has the req and res parameters, which stands for request and response. 
@@ -20,32 +21,42 @@ router.post('/', (req, res, next) => {
         cdFilialLst,
         nrParcelaLst,
         dtEmissaoLst,
-        nrDiasEmAbertoLst
+        nrDiasEmAbertoLst,
+        cdUnb,
+        cdCliente
     } = req.body
 
-    const negociacaoData = new RealizacaoDeNegociacao({
-        qtDiasInadimplencia,
-        dsEmail,
-        tpNegociacao,
-        nrParcelas,
-        idPeriodicidade,
-        idEntrada,
-        nrTituloLst,
-        dtVencimentoLst,
-        vlTituloLst, 
-        cdEmpresaLst,
-        cdFilialLst,
-        nrParcelaLst,
-        dtEmissaoLst,
-        nrDiasEmAbertoLst
+    const user = User.find({ cdUnb: cdUnb, cdCliente: cdCliente }, function(err, users){
+        if (err) return console.error(err)
+        if (users[0] === undefined) return res.status(500).json({msg: "User not found!"})
+        if (cdCliente === users[0].cdCliente && cdUnb === users[0].cdUnb) {
+            const negociacaoData = new RealizacaoDeNegociacao({
+                qtDiasInadimplencia,
+                dsEmail,
+                tpNegociacao,
+                nrParcelas,
+                idPeriodicidade,
+                idEntrada,
+                nrTituloLst,
+                dtVencimentoLst,
+                vlTituloLst, 
+                cdEmpresaLst,
+                cdFilialLst,
+                nrParcelaLst,
+                dtEmissaoLst,
+                nrDiasEmAbertoLst,
+                cdUnb: users[0].cdUnb,
+                cdCliente: users[0].cdCliente
+            })
+            negociacaoData.save()
+                .then(negociacaoDataSaved => {
+                    return res.status(201).json(negociacaoDataSaved)
+                })
+                .catch(err => {
+                    return res.status(500).json({msg: "Cannot save negotiation"})
+                })
+        }
     })
-    negociacaoData.save()
-        .then(negociacaoDataSaved => {
-            return res.status(201).json(negociacaoDataSaved)
-        })
-        .catch(err => {
-            return res.status(500).json({msg: "Cannot save negotiation"})
-        })
 })
 
 module.exports = router
