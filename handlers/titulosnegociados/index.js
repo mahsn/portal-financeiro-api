@@ -2,6 +2,7 @@ const router = require('express').Router()
 const repository = require('../../repository/titulosnegociados')
 const TitulosNegociados = require('../../models/titulosnegociados')
 const User = require('../../models/user')
+var dateFormat = require('dateformat')
 
 
 // Handlers are responsible for managing the request and response objects, and link them to a service module that will do the hard work.
@@ -17,6 +18,10 @@ const generateRandom = (min, max) => {
     max = Math.floor(max)
 
     return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
 router.post('/', (req, res, next) => {
@@ -41,7 +46,7 @@ router.post('/', (req, res, next) => {
                 Boleto: {
                   nrParcela:generateRandom(1,9),
                   vlBoleto:generateRandom(1,999),
-                  dtVencBoleto:"17/06/2019",
+                  dtVencBoleto:dateFormat(randomDate(new Date(2019, 0, 1), new Date()),'dd/mm/yyyy'),
                   stBoleto:generateRandom(1,9),
                   cdBarraBoleto:"34191090080004935293383338180009139720000014356",
                   dsStBoleto: "GERADO",
